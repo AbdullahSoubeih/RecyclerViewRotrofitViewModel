@@ -1,4 +1,4 @@
-package com.routes.recyclerviewrotrofitviewmodel;
+package com.routes.recyclerviewrotrofitviewmodel.Interface;
 
 
 

@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.routes.recyclerviewrotrofitviewmodel.Api;
+import com.routes.recyclerviewrotrofitviewmodel.Interface.Api;
 
 import java.util.List;
 
