@@ -6,17 +6,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.routes.recyclerviewrotrofitviewmodel.Model.Hero;
+import com.routes.recyclerviewrotrofitviewmodel.Model.HeroesViewModel;
 import com.routes.recyclerviewrotrofitviewmodel.R;
+import com.routes.recyclerviewrotrofitviewmodel.View.MainActivity;
 
 import java.util.List;
 
 public class HeroesAdapter extends RecyclerView.Adapter<HeroesAdapter.HeroViewHolder> {
+
+
+
 
     Context mCtx;
     List<Hero> heroList;
@@ -36,7 +47,8 @@ public class HeroesAdapter extends RecyclerView.Adapter<HeroesAdapter.HeroViewHo
     @NonNull
     @Override
     public HeroViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mCtx).inflate(R.layout.recyclerview_layout, parent, false);
+        View view = LayoutInflater.from(mCtx).inflate(R.layout.recyclerview_layout_1, parent, false);
+
         return new HeroViewHolder(view);
     }
 
@@ -86,7 +98,6 @@ public class HeroesAdapter extends RecyclerView.Adapter<HeroesAdapter.HeroViewHo
 
         }
     }
-
 
 
     //onClick Interface to use [onClick method] in GasStationsAdmin Fragment

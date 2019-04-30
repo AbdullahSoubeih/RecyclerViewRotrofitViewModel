@@ -55,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
                     public void onItemClick(int position) {
 
                         Toast.makeText(MainActivity.this,
-                                     "Real Name: " + model.getHeroes().getValue().get(position).getRealname()
+                                    "Name: " + model.getHeroes().getValue().get(position).getName()
+                                        +" ,Real Name: " + model.getHeroes().getValue().get(position).getRealname()
                                         + " ,Team: " + model.getHeroes().getValue().get(position).getTeam()
                                         + " ,Firstappearance: " + model.getHeroes().getValue().get(position).getFirstappearance()
                                         + " ,Createdby: " + model.getHeroes().getValue().get(position).getCreatedby()
