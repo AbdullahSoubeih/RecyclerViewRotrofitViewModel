@@ -5,34 +5,33 @@ android:layout_height="wrap_content"
 android:orientation="vertical"
     android:background="#BB5858">
 
-<ImageView
-    android:id="@+id/imageView_2"
-    android:layout_width="match_parent"
-    android:layout_height="200dp" />
-
-<TextView
-    android:id="@+id/textView_name"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textAlignment="center"
-    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-    android:textColor="#ffffff"/>
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
 
     <TextView
-        android:id="@+id/textView_team"
+        android:id="@+id/textView2_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        android:textColor="#ffffff"/>
-
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
     <TextView
-        android:id="@+id/textView_firstappearance"
+        android:id="@+id/textView2_team"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        android:textColor="#ffffff"/>
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+    <TextView
+        android:id="@+id/textView2_firstappearance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+
+
 
 </LinearLayout>

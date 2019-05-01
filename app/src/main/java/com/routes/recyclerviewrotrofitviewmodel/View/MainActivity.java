@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.routes.recyclerviewrotrofitviewmodel.Class.HeroesAdapterMultibleViews;
 import com.routes.recyclerviewrotrofitviewmodel.Model.Hero;
 import com.routes.recyclerviewrotrofitviewmodel.Class.HeroesAdapter;
 import com.routes.recyclerviewrotrofitviewmodel.Model.HeroesViewModel;
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     RecyclerView recyclerView;
-    HeroesAdapter adapter;
+    HeroesAdapterMultibleViews adapter;
 
     List<Hero> heroList;
 
@@ -44,13 +45,13 @@ public class MainActivity extends AppCompatActivity {
         model.getHeroes().observe(this, new Observer<List<Hero>>() {
             @Override
             public void onChanged(@Nullable List<Hero> heroList) {
-                adapter = new HeroesAdapter(MainActivity.this, heroList);
+                adapter = new HeroesAdapterMultibleViews(MainActivity.this, heroList);
                 recyclerView.setAdapter(adapter);
 
 
 
                 // OnItemClickListener on Item
-                adapter.setOnItemClickListener(new HeroesAdapter.OnItemClickListener() {
+                adapter.setOnItemClickListener(new HeroesAdapterMultibleViews.OnItemClickListener() {
                     @Override
                     public void onItemClick(int position) {
 
