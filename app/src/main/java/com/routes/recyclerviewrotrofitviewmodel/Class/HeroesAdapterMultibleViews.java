@@ -11,6 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.routes.recyclerviewrotrofitviewmodel.Model.Hero;
 import com.routes.recyclerviewrotrofitviewmodel.R;
 
@@ -18,9 +21,9 @@ import java.util.List;
 
 public class HeroesAdapterMultibleViews extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    private static final int ITEM_TYPE_1 = 1;
+    private static final int ITEM_TYPE_2 = 2;
 
-    public static final int ITEM_TYPE_1 = 0;
-    public static final int ITEM_TYPE_2 = 1;
 
     Context mCtx;
     List<Hero> heroList;
@@ -66,7 +69,12 @@ public class HeroesAdapterMultibleViews extends RecyclerView.Adapter<RecyclerVie
             HeroViewHolder1 heroViewHolder1 = (HeroViewHolder1) holder;
            // imageViewHolder.mImage.setImageResource(...);
 
-              Glide.with(mCtx).load(hero.getImageurl()).into(heroViewHolder1.imageView);
+              //Glide.with(mCtx).load(hero.getImageurl()).into(heroViewHolder1.imageView);
+
+             RequestOptions options = new RequestOptions().centerCrop().placeholder(R.drawable.progress_animation).error(R.drawable.loading_image).diskCacheStrategy(DiskCacheStrategy.ALL).priority(Priority.HIGH).dontAnimate().dontTransform();
+
+            Glide.with(mCtx).load(hero.getImageurl()).apply(options).into(heroViewHolder1.imageView);
+
 
             heroViewHolder1.textView.setText(hero.getName());
 
@@ -78,7 +86,13 @@ public class HeroesAdapterMultibleViews extends RecyclerView.Adapter<RecyclerVie
             HeroViewHolder2 heroViewHolder2 = (HeroViewHolder2) holder;
             // imageViewHolder.mImage.setImageResource(...);
 
-            Glide.with(mCtx).load(hero.getImageurl()).into(heroViewHolder2.imageView2);
+           // Glide.with(mCtx).load(hero.getImageurl()).into(heroViewHolder2.imageView2);
+
+
+            RequestOptions options = new RequestOptions().centerCrop().placeholder(R.drawable.progress_animation).error(R.drawable.loading_image).diskCacheStrategy(DiskCacheStrategy.ALL).priority(Priority.HIGH).dontAnimate().dontTransform();
+
+            Glide.with(mCtx).load(hero.getImageurl()).apply(options).into(heroViewHolder2.imageView2);
+
 
             heroViewHolder2.textView2_name.setText(hero.getName());
             heroViewHolder2.textView2_team.setText(hero.getTeam());
