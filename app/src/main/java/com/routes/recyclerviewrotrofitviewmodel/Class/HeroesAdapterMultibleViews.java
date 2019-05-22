@@ -18,6 +18,7 @@ import com.routes.recyclerviewrotrofitviewmodel.Model.Hero;
 import com.routes.recyclerviewrotrofitviewmodel.R;
 
 import java.util.List;
+import java.util.Random;
 
 public class HeroesAdapterMultibleViews extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -35,6 +36,7 @@ public class HeroesAdapterMultibleViews extends RecyclerView.Adapter<RecyclerVie
     public HeroesAdapterMultibleViews(Context mCtx, List<Hero> heroList) {
         this.mCtx = mCtx;
         this.heroList = heroList;
+
     }
 
 
@@ -62,6 +64,8 @@ public class HeroesAdapterMultibleViews extends RecyclerView.Adapter<RecyclerVie
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Hero hero = heroList.get(position);
+
+        //Hero hero = heroList.get(new Random().nextInt(heroList.size()));
 
         final int itemType = getItemViewType(position);
     //    final int itemType = getItemViewType(hero.getFirstappearance());
@@ -119,6 +123,9 @@ public class HeroesAdapterMultibleViews extends RecyclerView.Adapter<RecyclerVie
     public int getItemViewType(int position) {
 
     Hero hero = heroList.get(position);
+
+
+    //Hero hero = heroList.get(new Random().nextInt(heroList.size()));
 
            // if (position == 3) {
 

@@ -21,6 +21,7 @@ import com.routes.recyclerviewrotrofitviewmodel.Model.HeroesViewModel;
 import com.routes.recyclerviewrotrofitviewmodel.R;
 
 import java.util.List;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
@@ -88,6 +89,10 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         model.getHeroes().observe(this, new Observer<List<Hero>>() {
             @Override
             public void onChanged(@Nullable List<Hero> heroList) {
+
+              //  heroList.get(new Random().nextInt(heroList.size()));
+
+
                 adapter = new HeroesAdapterMultibleViews(MainActivity.this, heroList);
                 recyclerView.setAdapter(adapter);
 
@@ -110,6 +115,10 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 });
             }
         });
+
+
+
+
 
         // Stopping swipe refresh
         mSwipeRefreshLayout.setRefreshing(false);

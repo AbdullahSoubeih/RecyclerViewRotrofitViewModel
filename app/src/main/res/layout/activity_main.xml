@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".View.MainActivity"
-    android:background="#E3E7E7">
+    android:background="@drawable/routesbackgroud1">
 
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/mSwipeRefreshLayout">
+        android:id="@+id/mSwipeRefreshLayout"
+        android:background="#80E3E7E7">
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -33,7 +34,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="12dp"
         android:layout_marginRight="12dp"
-        android:src="@drawable/ic_arrow_up"/>
+        android:src="@drawable/ic_arrow_up"
+        />
 
 
 
