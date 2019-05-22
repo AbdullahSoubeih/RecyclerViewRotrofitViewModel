@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,13 +21,14 @@ import com.routes.recyclerviewrotrofitviewmodel.R;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
 
-    RecyclerView recyclerView;
-    HeroesAdapterMultibleViews adapter;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
+    private RecyclerView recyclerView;
+    private HeroesAdapterMultibleViews adapter;
 
-    List<Hero> heroList;
+    //private List<Hero> heroList;
 
 
     @Override
@@ -34,12 +36,42 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        mSwipeRefreshLayout = findViewById(R.id.mSwipeRefreshLayout);
+        mSwipeRefreshLayout.setOnRefreshListener(MainActivity.this);
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.colorAccent, android.R.color.holo_green_dark, android.R.color.holo_orange_dark, android.R.color.holo_blue_dark);
+
+        /**
+         * Showing Swipe Refresh animation on activity create
+         * As animation won't start on onCreate, post runnable is used
+         */
+        mSwipeRefreshLayout.post(new Runnable() {
+
+            @Override
+            public void run() {
+
+                if(mSwipeRefreshLayout != null) {
+                    mSwipeRefreshLayout.setRefreshing(true);
+                }
+
+                // Fetching data from server
+                loadRecyclerViewData();
+            }
+        });
+
+
+
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
 
+
+
+    }
+
+    private void loadRecyclerViewData() {
         final HeroesViewModel model = ViewModelProviders.of(this).get(HeroesViewModel.class);
 
         model.getHeroes().observe(this, new Observer<List<Hero>>() {
@@ -56,26 +88,27 @@ public class MainActivity extends AppCompatActivity {
                     public void onItemClick(int position) {
 
                         Toast.makeText(MainActivity.this,
-                                    "Name: " + model.getHeroes().getValue().get(position).getName()
+                                "Name: " + model.getHeroes().getValue().get(position).getName()
                                         +" ,Real Name: " + model.getHeroes().getValue().get(position).getRealname()
                                         + " ,Team: " + model.getHeroes().getValue().get(position).getTeam()
                                         + " ,Firstappearance: " + model.getHeroes().getValue().get(position).getFirstappearance()
                                         + " ,Createdby: " + model.getHeroes().getValue().get(position).getCreatedby()
                                         + " ,Publisher: " + model.getHeroes().getValue().get(position).getPublisher()
                                 , Toast.LENGTH_SHORT).show();
-                        
                     }
                 });
             }
         });
 
-
-
+        // Stopping swipe refresh
+        mSwipeRefreshLayout.setRefreshing(false);
 
     }
 
 
-
-
-
+    @Override
+    public void onRefresh() {
+        // Fetching data from server
+        loadRecyclerViewData();
+    }
 }
