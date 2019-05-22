@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.routes.recyclerviewrotrofitviewmodel.Class.HeroesAdapterMultibleViews;
 import com.routes.recyclerviewrotrofitviewmodel.Model.Hero;
 import com.routes.recyclerviewrotrofitviewmodel.Class.HeroesAdapter;
@@ -23,6 +24,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
+
+    private FloatingActionButton fab_recreate;
 
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView recyclerView;
@@ -36,6 +39,14 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        fab_recreate = findViewById(R.id.fab_recreate);
+        fab_recreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadRecyclerViewData();
+            }
+        });
 
         mSwipeRefreshLayout = findViewById(R.id.mSwipeRefreshLayout);
         mSwipeRefreshLayout.setOnRefreshListener(MainActivity.this);

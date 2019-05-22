@@ -42,6 +42,8 @@ public class HeroesAdapterMultibleViews extends RecyclerView.Adapter<RecyclerVie
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
+
+
         if (viewType == ITEM_TYPE_1) {
             View normalView = LayoutInflater.from(mCtx).inflate(R.layout.recyclerview_layout_1,parent, false);
             return new HeroViewHolder1(normalView); // view holder for normal items
